@@ -97,6 +97,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cpj-g1-UV1"/>
+                    <connections>
+                        <outlet property="recordButton" destination="La8-rK-ObF" id="VWi-DT-N1b"/>
+                        <outlet property="settingsButton" destination="08s-A8-006" id="F7V-Zb-e6s"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

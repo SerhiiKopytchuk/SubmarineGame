@@ -51,6 +51,8 @@ class GameViewController: UIViewController {
         downButtonView.addGestureRecognizer(downTapRecognizer)
         
         
+        
+        
         startGame()
         moveRyph()
         moveWater()
@@ -323,3 +325,7 @@ class GameViewController: UIViewController {
         })
     }
 }
+
+//MARK: - extensions
+
+
