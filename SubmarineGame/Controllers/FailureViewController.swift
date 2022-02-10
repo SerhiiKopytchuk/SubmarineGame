@@ -11,6 +11,7 @@ class FailureViewController: UIViewController {
 
     @IBOutlet weak var ScoreLabel: UILabel!
     @IBOutlet weak var retryButton: UIButton!
+    @IBOutlet weak var gameOverLabel: UILabel!
     
     var score:String?
     
@@ -20,10 +21,14 @@ class FailureViewController: UIViewController {
         if let score = score {
             ScoreLabel.text = score
         }
-        
-        
     }
     
+    override func viewDidLayoutSubviews() {
+        ScoreLabel.font = UIFont(name: "UA_Wadim_Giant", size: 35)
+        gameOverLabel.font = UIFont(name: "UA_Wadim_Giant", size: 50)
+        retryButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 30)
+        retryButton.titleLabel?.textColor = UIColor.black
+    }
     
     @IBAction func retryButton(_ sender: UIButton) {
         self.navigationController?.popToRootViewController(animated: true)

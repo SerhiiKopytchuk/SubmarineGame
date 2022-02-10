@@ -24,6 +24,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var waterSecondImageView: UIImageView!
     @IBOutlet weak var oxygenView: UIView!
     @IBOutlet weak var airBalloonImageView: UIImageView!
+    @IBOutlet weak var backButton: UIButton!
     
     
     
@@ -63,6 +64,13 @@ class GameViewController: UIViewController {
         oxygenToFull()
         endGame()
     }
+    
+    override func viewDidLayoutSubviews() {
+        ScoreLabel.font = UIFont(name: "UA_Wadim_Giant", size: 20)
+        backButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 20)
+        backButton.titleLabel?.textColor = .black
+    }
+    
     
     //MARK: - IBActions
     
