@@ -322,6 +322,7 @@
                     </view>
                     <connections>
                         <outlet property="ScoreLabel" destination="kKr-Q4-eGf" id="mZr-gf-Ggz"/>
+                        <outlet property="retryButton" destination="n4U-c3-ZWl" id="XOc-eB-QNn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wMY-ZN-VFR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -10,6 +10,7 @@ import UIKit
 class FailureViewController: UIViewController {
 
     @IBOutlet weak var ScoreLabel: UILabel!
+    @IBOutlet weak var retryButton: UIButton!
     
     var score:String?
     
