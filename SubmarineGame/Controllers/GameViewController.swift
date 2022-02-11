@@ -25,6 +25,9 @@ class GameViewController: UIViewController {
     @IBOutlet weak var oxygenView: UIView!
     @IBOutlet weak var airBalloonImageView: UIImageView!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var missileImageView: UIImageView!
+    @IBOutlet weak var explosionImageView: UIImageView!
+    @IBOutlet weak var fireButton: UIButton!
     
     
     
@@ -34,7 +37,9 @@ class GameViewController: UIViewController {
     var screenHeight = CGFloat(UIScreen.main.fixedCoordinateSpace.bounds.height)
     var oxygen = Double(100)
     var loose = false
-    
+    var missileTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in}
+    var canShoot = true
+    var missiles = 3
     
     
     //MARK: - lifecycle function
@@ -54,6 +59,8 @@ class GameViewController: UIViewController {
         downButtonView.layer.dropShadow()
         upButtonView.layer.dropShadow()
         
+        explosionImageView.isHidden = true
+        
         
         startGame()
         moveRyph()
@@ -62,6 +69,7 @@ class GameViewController: UIViewController {
         score()
         moveAirBallon()
         oxygenToFull()
+        checkMissileTouch()
         endGame()
     }
     
@@ -75,6 +83,7 @@ class GameViewController: UIViewController {
     //MARK: - IBActions
     
     @IBAction func toMenuButtonpressed(_ sender: UIButton) {
+        self.boatImageView.isHidden = true
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -87,11 +96,18 @@ class GameViewController: UIViewController {
     }
     
     
-        
-
     @IBAction func downButtonPressed(_ sender: UIButton) {
         UIView.animate(withDuration: 0.2) {
             self.submarineImageView.frame.origin.y += 30
+        }
+    }
+    
+    
+    @IBAction func FireButtonPressed(_ sender: UIButton) {
+        if canShoot{
+            if missiles>0{
+                missileFire()
+            }
         }
     }
     
@@ -108,6 +124,7 @@ class GameViewController: UIViewController {
         sharkImageForthView.frame.origin.x  = screenHeight
         airBalloonImageView.frame.origin.x  = screenHeight
         boatImageView.frame.origin.x  = screenHeight
+        missileImageView.frame.origin.x = screenHeight+500
         
         
         
@@ -134,7 +151,7 @@ class GameViewController: UIViewController {
             })
         }
     }
-
+    
     
     
     func moveShark(){
@@ -150,7 +167,7 @@ class GameViewController: UIViewController {
             }
         })
     }
-
+    
     func moveSharkSecond(){
         self.sharkImageSecondView.frame.origin.y = CGFloat.random(in: 100...self.screenWidth-150)
         _ = Timer.scheduledTimer(withTimeInterval: TimeInterval(Int32.random(in: 4...8)), repeats: false, block: { _ in
@@ -201,7 +218,7 @@ class GameViewController: UIViewController {
     
     
     func moveBoat(){
-         _ = Timer.scheduledTimer(withTimeInterval: 5 , repeats: false, block: { _ in
+        _ = Timer.scheduledTimer(withTimeInterval: 5 , repeats: false, block: { _ in
             let _ = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: { _ in
                 UIView.animate(withDuration: 0.01, delay: 0.0, options: [.curveLinear]) {
                     self.boatImageView.frame.origin.x -= 2
@@ -219,7 +236,7 @@ class GameViewController: UIViewController {
         ryphSecondImageView.frame.origin.y = ryphFirstImageView.frame.origin.y
         ryphSecondImageView.frame.origin.x = screenHeight
         let firstPos = self.ryphFirstImageView.frame.origin.x
-    
+        
         let ryphWidth = -self.ryphFirstImageView.frame.width
         UIView.animate(withDuration: 5, delay: 0.0, options: [.repeat, .curveLinear]) {
             self.ryphSecondImageView.frame.origin.x = self.ryphFirstImageView.frame.origin.x
@@ -233,7 +250,7 @@ class GameViewController: UIViewController {
         waterSecondImageView.frame.origin.y = waterFirstImageView.frame.origin.y
         waterSecondImageView.frame.origin.x = screenHeight
         let firstPos = self.waterFirstImageView.frame.origin.x
-    
+        
         let ryphWidth = -self.waterSecondImageView.frame.width
         UIView.animate(withDuration: 5, delay: 0.0, options: [.repeat, .curveLinear]) {
             self.waterSecondImageView.frame.origin.x = self.waterFirstImageView.frame.origin.x
@@ -317,8 +334,8 @@ class GameViewController: UIViewController {
                 if self.oxygen > 100{
                     self.oxygen = 100
                 }else{
-                self.oxygen += 2
-                
+                    self.oxygen += 2
+                    
                 }
             }else{
                 self.oxygen -= 0.7
@@ -330,34 +347,73 @@ class GameViewController: UIViewController {
             } completion: { _ in
                 
             }
-
+            
         })
+    }
+    
+    func missileFire(){
+        missiles -= 1
+        canShoot = false
+        missileImageView.center = submarineImageView.center
+        missileTimer = Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true, block: { _ in
+            UIView.animate(withDuration: 0.02, delay: 0.0, options: [.curveLinear]) {
+                
+                self.missileImageView.frame.origin.x += 11
+            }
+            if self.missileImageView.frame.origin.x > self.screenHeight{
+                self.missileTimer.invalidate()
+                self.canShoot = true
+            }
+        })
+    }
+    
+    func checkMissileTouch(){
+        let _ = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { [self] _ in
+            if missileImageView.frame.intersects(sharkImageView.frame){
+                showExplosion()
+                missileImageView.frame.origin.x = screenHeight+500
+                sharkImageView.frame.origin.x = 2000
+            }
+            if missileImageView.frame.intersects(sharkImageSecondView.frame){
+                showExplosion()
+                missileImageView.frame.origin.x = screenHeight+500
+                sharkImageSecondView.frame.origin.x = 2000
+            }
+            if missileImageView.frame.intersects(sharkImageThirdView.frame){
+                showExplosion()
+                missileImageView.frame.origin.x = screenHeight+500
+                sharkImageThirdView.frame.origin.x = 2000
+            }
+            if missileImageView.frame.intersects(sharkImageForthView.frame){
+                showExplosion()
+                missileImageView.frame.origin.x = screenHeight+500
+                sharkImageForthView.frame.origin.x = 2000
+            }
+            if missileImageView.frame.intersects(boatImageView.frame){
+                showExplosion()
+                missileImageView.frame.origin.x = screenHeight+500
+            }
+        }
+    }
+    
+    func showExplosion() {
+        self.explosionImageView.center = missileImageView.center
+        self.explosionImageView.frame.origin.x += explosionImageView.frame.width/2
+        self.explosionImageView.isHidden = false
+        moveExplotion()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.explosionImageView.isHidden = true
+        }
+    }
+    
+    func moveExplotion(){
+        UIView.animate(withDuration: 1.1, delay: 0.0, options: [.repeat, .curveLinear]) {
+            self.explosionImageView.frame.origin.x -= 150
+        }
     }
 }
 
 //MARK: - extensions
 
 
-//extension CALayer {
-//  func dropShadow1(
-//    color: UIColor = .black,
-//    alpha: Float = 0.5,
-//    x: CGFloat = 0,
-//    y: CGFloat = 2,
-//    blur: CGFloat = 4,
-//    spread: CGFloat = 0)
-//  {
-//    masksToBounds = false
-//    shadowColor = color.cgColor
-//    shadowOpacity = alpha
-//    shadowOffset = CGSize(width: x, height: y)
-//    shadowRadius = blur / 2.0
-//    if spread == 0 {
-//      shadowPath = nil
-//    } else {
-//      let dx = -spread
-//      let rect = bounds.insetBy(dx: dx, dy: dx)
-//      shadowPath = UIBezierPath(rect: rect).cgPath
-//    }
-//  }
-//}
+

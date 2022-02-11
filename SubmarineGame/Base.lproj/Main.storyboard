@@ -155,6 +155,10 @@
                                 <rect key="frame" x="716" y="123" width="51" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="explosion" translatesAutoresizingMaskIntoConstraints="NO" id="i6R-1F-3QV">
+                                <rect key="frame" x="413" y="184" width="70" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nxy-S6-U1V">
                                 <rect key="frame" x="0.0" y="0.0" width="140" height="413"/>
                                 <subviews>
@@ -205,6 +209,9 @@
                                         <buttonConfiguration key="configuration" style="filled" title="Fire">
                                             <color key="baseBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="FireButtonPressed:" destination="NTq-7e-SYg" eventType="touchUpInside" id="T0v-FK-uq2"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -240,6 +247,10 @@
                                 <rect key="frame" x="168" y="195" width="117" height="24"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="missile" translatesAutoresizingMaskIntoConstraints="NO" id="Yat-NH-KWe">
+                                <rect key="frame" x="299" y="210" width="60" height="9"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <constraints>
@@ -254,6 +265,9 @@
                         <outlet property="backButton" destination="9gv-hd-kEo" id="dza-6c-zNR"/>
                         <outlet property="boatImageView" destination="EEG-Il-Oi5" id="0NK-lV-OtD"/>
                         <outlet property="downButtonView" destination="vgX-Pp-cNe" id="Rjq-Tc-mZu"/>
+                        <outlet property="explosionImageView" destination="i6R-1F-3QV" id="H1y-zk-2Kn"/>
+                        <outlet property="fireButton" destination="iAm-NA-YBA" id="5Um-Fe-7PI"/>
+                        <outlet property="missileImageView" destination="Yat-NH-KWe" id="m2k-wO-n9j"/>
                         <outlet property="oxygenView" destination="qqy-uk-Fo8" id="p91-BG-3fO"/>
                         <outlet property="ryphFirstImageView" destination="EeT-Ok-Gh8" id="sbV-UR-Z2D"/>
                         <outlet property="ryphSecondImageView" destination="HSw-f8-V5z" id="a6w-us-LvC"/>
@@ -399,7 +413,9 @@
         <image name="arrowDown" width="105.33333587646484" height="80"/>
         <image name="arrowUp" width="105.33333587646484" height="79.333335876464844"/>
         <image name="boatImage" width="97.333335876464844" height="31"/>
+        <image name="explosion" width="997.66668701171875" height="854.66668701171875"/>
         <image name="menuImage" width="896" height="414"/>
+        <image name="missile" width="224" height="25.666666030883789"/>
         <image name="ruphImage" width="896" height="55.666667938232422"/>
         <image name="submarineImage" width="568.66668701171875" height="114.66666412353516"/>
         <image name="waterImage" width="896" height="414"/>
