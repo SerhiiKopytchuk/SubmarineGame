@@ -76,3 +76,9 @@ extension CALayer {
         }
     }
 }
+
+extension UIView{
+    func rounded(radius: CGFloat = 15){
+        self.layer.cornerRadius = radius
+    }
+}

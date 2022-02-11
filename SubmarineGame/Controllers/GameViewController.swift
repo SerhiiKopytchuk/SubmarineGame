@@ -28,6 +28,11 @@ class GameViewController: UIViewController {
     @IBOutlet weak var missileImageView: UIImageView!
     @IBOutlet weak var explosionImageView: UIImageView!
     @IBOutlet weak var fireButton: UIButton!
+    @IBOutlet weak var blurAllScreen: UIVisualEffectView!
+    @IBOutlet weak var leftMenuConstrain: NSLayoutConstraint!
+    @IBOutlet weak var leftMenuView: UIView!
+    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var exitButton: UIButton!
     
     
     
@@ -40,7 +45,9 @@ class GameViewController: UIViewController {
     var missileTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in}
     var canShoot = true
     var missiles = 3
+    var canShowFailure = true
     
+
     
     //MARK: - lifecycle function
     override func viewDidLoad() {
@@ -60,7 +67,10 @@ class GameViewController: UIViewController {
         upButtonView.layer.dropShadow()
         
         explosionImageView.isHidden = true
+        blurAllScreen.isHidden = true
         
+        leftMenuConstrain.constant = -leftMenuView.frame.width
+        leftMenuView.rounded(radius: 30)
         
         startGame()
         moveRyph()
@@ -76,15 +86,29 @@ class GameViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         ScoreLabel.font = UIFont(name: "UA_Wadim_Giant", size: 20)
         backButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 20)
+        closeButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 20)
+        exitButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 30)
         backButton.titleLabel?.textColor = .black
+        closeButton.titleLabel?.textColor = .black
+        exitButton.titleLabel?.textColor = .black
+        
     }
     
     
     //MARK: - IBActions
     
+    @IBAction func exitButtonPressed(_ sender: UIButton) {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
     @IBAction func toMenuButtonpressed(_ sender: UIButton) {
-        self.boatImageView.isHidden = true
-        self.navigationController?.popViewController(animated: true)
+        canShowFailure = false
+        leftMenuConstrain.constant = 0
+        
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+        blurAllScreen.isHidden = false
     }
     
     @IBAction func upButtonPressed(_ sender: UIButton) {
@@ -111,6 +135,18 @@ class GameViewController: UIViewController {
         }
     }
     
+    @IBAction func closeButtonPressed(_ sender: UIButton) {
+        
+        
+        canShowFailure = true
+        leftMenuConstrain.constant = -leftMenuView.frame.width
+        
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+        blurAllScreen.isHidden = true
+        
+    }
     
     //MARK: - func
     
@@ -136,10 +172,12 @@ class GameViewController: UIViewController {
     }
     
     
+
+    
     func moveAirBallon(){
         self.airBalloonImageView.frame.origin.y = CGFloat.random(in: 100...self.screenWidth-50)
-        let _ = Timer.scheduledTimer(withTimeInterval: TimeInterval(Int.random(in: 30...55)), repeats: false) { _ in
-            let _ = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { _ in
+        _ = Timer.scheduledTimer(withTimeInterval: TimeInterval(Int.random(in: 30...55)), repeats: false) { _ in
+            _ = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { _ in
                 UIView.animate(withDuration: 0.05, delay: 0.0, options: [.curveLinear]) {
                     self.airBalloonImageView.frame.origin.x -= 10
                 } completion: { _ in
@@ -156,7 +194,7 @@ class GameViewController: UIViewController {
     
     func moveShark(){
         self.sharkImageView.frame.origin.y = CGFloat.random(in: 100...self.screenWidth-50)
-        let _ = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { _ in
+        _ = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { _ in
             UIView.animate(withDuration: 0.05, delay: 0.0, options: [.curveLinear]) {
                 self.sharkImageView.frame.origin.x -= 11
             } completion: { _ in
@@ -171,7 +209,7 @@ class GameViewController: UIViewController {
     func moveSharkSecond(){
         self.sharkImageSecondView.frame.origin.y = CGFloat.random(in: 100...self.screenWidth-150)
         _ = Timer.scheduledTimer(withTimeInterval: TimeInterval(Int32.random(in: 4...8)), repeats: false, block: { _ in
-            let _ = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { _ in
+            _ = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { _ in
                 UIView.animate(withDuration: 0.05, delay: 0.0, options: [.curveLinear]) {
                     self.sharkImageSecondView.frame.origin.x -= 13
                 } completion: { _ in
@@ -187,7 +225,7 @@ class GameViewController: UIViewController {
     func moveSharkThird(){
         self.sharkImageThirdView.frame.origin.y = CGFloat.random(in: 100...self.screenWidth-150)
         _ = Timer.scheduledTimer(withTimeInterval: TimeInterval(Int32.random(in: 8...16)), repeats: false, block: { _ in
-            let _ = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { _ in
+            _ = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { _ in
                 UIView.animate(withDuration: 0.05, delay: 0.0, options: [.curveLinear]) {
                     self.sharkImageThirdView.frame.origin.x -= 15
                 } completion: { _ in
@@ -203,7 +241,7 @@ class GameViewController: UIViewController {
     func moveSharkForth(){
         self.sharkImageForthView.frame.origin.y = CGFloat.random(in: 100...self.screenWidth-150)
         _ = Timer.scheduledTimer(withTimeInterval: TimeInterval(Int32.random(in: 1...30)), repeats: false, block: { _ in
-            let _ = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { _ in
+            _ = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { _ in
                 UIView.animate(withDuration: 0.05, delay: 0.0, options: [.curveLinear]) {
                     self.sharkImageForthView.frame.origin.x -= 20
                 } completion: { _ in
@@ -219,7 +257,7 @@ class GameViewController: UIViewController {
     
     func moveBoat(){
         _ = Timer.scheduledTimer(withTimeInterval: 5 , repeats: false, block: { _ in
-            let _ = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: { _ in
+            _ = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: { _ in
                 UIView.animate(withDuration: 0.01, delay: 0.0, options: [.curveLinear]) {
                     self.boatImageView.frame.origin.x -= 2
                 } completion: { _ in}
@@ -262,50 +300,45 @@ class GameViewController: UIViewController {
     
     
     func endGame(){
-        let controller = navigationController?.storyboard?.instantiateViewController(withIdentifier: "FailureViewController") as! FailureViewController
+        
         _ = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {  _ in
             if self.submarineImageView.frame.origin.y > self.screenWidth - 2 * self.ryphFirstImageView.frame.height && self.loose == false{
                 self.loose = true
-                controller.score = self.ScoreLabel.text
-                self.navigationController?.pushViewController(controller, animated: true)
+                self.showFailureWindow()
             }
             
             if self.submarineImageView.frame.intersects(self.sharkImageView.frame) && self.loose == false{
-                self.loose = true
                 self.sharkImageView.frame.origin.x = 0
-                controller.score = self.ScoreLabel.text
-                self.navigationController?.pushViewController(controller, animated: true)
+                self.showFailureWindow()
             }
             if self.submarineImageView.frame.intersects(self.sharkImageSecondView.frame) && self.loose == false {
-                self.loose = true
                 self.sharkImageSecondView.frame.origin.x = 0
-                controller.score = self.ScoreLabel.text
-                self.navigationController?.pushViewController(controller, animated: true)
+                self.showFailureWindow()
             }
             if self.submarineImageView.frame.intersects(self.sharkImageThirdView.frame) && self.loose == false {
-                self.loose = true
                 self.sharkImageThirdView.frame.origin.x = 0
-                controller.score = self.ScoreLabel.text
-                self.navigationController?.pushViewController(controller, animated: true)
+                self.showFailureWindow()
             }
             if self.submarineImageView.frame.intersects(self.sharkImageForthView.frame) && self.loose == false {
-                self.loose = true
                 self.sharkImageForthView.frame.origin.x = 0
-                controller.score = self.ScoreLabel.text
-                self.navigationController?.pushViewController(controller, animated: true)
+                self.showFailureWindow()
             }
             if self.submarineImageView.frame.intersects(self.boatImageView.frame) && self.loose == false {
-                self.loose = true
                 self.boatImageView.frame.origin.x = 0
-                controller.score = self.ScoreLabel.text
-                self.navigationController?.pushViewController(controller, animated: true)
+                self.showFailureWindow()
             }
             if self.oxygen <= 0 && self.loose == false {
-                self.loose = true
-                self.boatImageView.frame.origin.x = 0
-                controller.score = self.ScoreLabel.text
-                self.navigationController?.pushViewController(controller, animated: true)
+                self.showFailureWindow()
             }
+        }
+    }
+    
+    func showFailureWindow(){
+        if canShowFailure{
+            self.loose = true
+            let controller = navigationController?.storyboard?.instantiateViewController(withIdentifier: "FailureViewController") as! FailureViewController
+            controller.score = self.ScoreLabel.text
+            self.navigationController?.pushViewController(controller, animated: true)
         }
     }
     
@@ -368,7 +401,7 @@ class GameViewController: UIViewController {
     }
     
     func checkMissileTouch(){
-        let _ = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { [self] _ in
+        _ = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { [self] _ in
             if missileImageView.frame.intersects(sharkImageView.frame){
                 showExplosion()
                 missileImageView.frame.origin.x = screenHeight+500

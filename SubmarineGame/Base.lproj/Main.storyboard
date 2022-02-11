@@ -172,7 +172,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gv-hd-kEo">
                                         <rect key="frame" x="20" y="15" width="90" height="31"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="gray" title="back"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="menu"/>
                                         <connections>
                                             <action selector="toMenuButtonpressed:" destination="NTq-7e-SYg" eventType="touchUpInside" id="ZFX-qP-x4G"/>
                                         </connections>
@@ -251,22 +251,86 @@
                                 <rect key="frame" x="299" y="210" width="60" height="9"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRQ-nT-Q5c">
+                                <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="7WV-16-yAo">
+                                    <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kKG-Eh-fkM">
+                                            <rect key="frame" x="0.0" y="0.0" width="656" height="286"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="JjE-0x-0ut">
+                                                <rect key="frame" x="0.0" y="0.0" width="656" height="286"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </view>
+                                            <vibrancyEffect>
+                                                <blurEffect style="regular"/>
+                                            </vibrancyEffect>
+                                        </visualEffectView>
+                                    </subviews>
+                                </view>
+                                <blurEffect style="regular"/>
+                            </visualEffectView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nak-0F-hhy">
+                                <rect key="frame" x="0.0" y="0.0" width="322" height="414"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C4w-N1-hLX">
+                                        <rect key="frame" x="40" y="15" width="122" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="Close"/>
+                                        <connections>
+                                            <action selector="closeButtonPressed:" destination="NTq-7e-SYg" eventType="touchUpInside" id="yXo-5R-Eig"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rde-LA-ZnA">
+                                        <rect key="frame" x="40" y="363" width="242" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="exit"/>
+                                        <connections>
+                                            <action selector="exitButtonPressed:" destination="NTq-7e-SYg" eventType="touchUpInside" id="buM-dQ-FrT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="322" id="5Eb-yV-rfT"/>
+                                    <constraint firstAttribute="trailing" secondItem="C4w-N1-hLX" secondAttribute="trailing" constant="160" id="9Hy-ci-eXI"/>
+                                    <constraint firstItem="C4w-N1-hLX" firstAttribute="top" secondItem="nak-0F-hhy" secondAttribute="top" constant="15" id="HPq-Bv-efv"/>
+                                    <constraint firstAttribute="trailing" secondItem="rde-LA-ZnA" secondAttribute="trailing" constant="40" id="dBS-Ga-Mcu"/>
+                                    <constraint firstAttribute="bottom" secondItem="rde-LA-ZnA" secondAttribute="bottom" constant="20" id="jeT-o3-B9s"/>
+                                    <constraint firstItem="rde-LA-ZnA" firstAttribute="leading" secondItem="nak-0F-hhy" secondAttribute="leading" constant="40" id="qty-IA-LvC"/>
+                                    <constraint firstItem="C4w-N1-hLX" firstAttribute="leading" secondItem="nak-0F-hhy" secondAttribute="leading" constant="40" id="z8S-Gc-Poq"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="bRQ-nT-Q5c" firstAttribute="leading" secondItem="qNz-ES-avq" secondAttribute="leading" id="0uT-pb-P2U"/>
+                            <constraint firstAttribute="bottom" secondItem="bRQ-nT-Q5c" secondAttribute="bottom" id="3Dm-9C-ucK"/>
+                            <constraint firstAttribute="bottom" secondItem="nak-0F-hhy" secondAttribute="bottom" id="7nh-Cx-hJs"/>
                             <constraint firstItem="nxy-S6-U1V" firstAttribute="leading" secondItem="qNz-ES-avq" secondAttribute="leading" id="Z1p-pB-kVs"/>
                             <constraint firstItem="ozq-ak-BIA" firstAttribute="top" secondItem="nxy-S6-U1V" secondAttribute="bottom" constant="-20" id="ZoR-4n-qsU"/>
+                            <constraint firstAttribute="trailing" secondItem="bRQ-nT-Q5c" secondAttribute="trailing" id="bZz-Ku-q5X"/>
+                            <constraint firstItem="nak-0F-hhy" firstAttribute="leading" secondItem="qNz-ES-avq" secondAttribute="leading" id="cXg-Uf-wum"/>
+                            <constraint firstItem="nak-0F-hhy" firstAttribute="top" secondItem="OMi-Y4-2kL" secondAttribute="bottom" id="g88-Q8-hUD"/>
                             <constraint firstItem="nxy-S6-U1V" firstAttribute="top" secondItem="OMi-Y4-2kL" secondAttribute="bottom" id="ksq-oK-cA3"/>
+                            <constraint firstItem="bRQ-nT-Q5c" firstAttribute="top" secondItem="OMi-Y4-2kL" secondAttribute="bottom" id="mfE-Po-xXG"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="ScoreLabel" destination="Nvd-HR-8Eo" id="Jjj-VK-3AM"/>
                         <outlet property="airBalloonImageView" destination="m1F-BK-d2p" id="fft-fb-Huy"/>
                         <outlet property="backButton" destination="9gv-hd-kEo" id="dza-6c-zNR"/>
+                        <outlet property="blurAllScreen" destination="bRQ-nT-Q5c" id="u4l-Su-69K"/>
                         <outlet property="boatImageView" destination="EEG-Il-Oi5" id="0NK-lV-OtD"/>
+                        <outlet property="closeButton" destination="C4w-N1-hLX" id="gZx-hh-YOB"/>
                         <outlet property="downButtonView" destination="vgX-Pp-cNe" id="Rjq-Tc-mZu"/>
+                        <outlet property="exitButton" destination="rde-LA-ZnA" id="LI6-OD-2QD"/>
                         <outlet property="explosionImageView" destination="i6R-1F-3QV" id="H1y-zk-2Kn"/>
                         <outlet property="fireButton" destination="iAm-NA-YBA" id="5Um-Fe-7PI"/>
+                        <outlet property="leftMenuConstrain" destination="cXg-Uf-wum" id="pnS-1K-Do9"/>
+                        <outlet property="leftMenuView" destination="nak-0F-hhy" id="e5f-Ar-rHF"/>
                         <outlet property="missileImageView" destination="Yat-NH-KWe" id="m2k-wO-n9j"/>
                         <outlet property="oxygenView" destination="qqy-uk-Fo8" id="p91-BG-3fO"/>
                         <outlet property="ryphFirstImageView" destination="EeT-Ok-Gh8" id="sbV-UR-Z2D"/>
