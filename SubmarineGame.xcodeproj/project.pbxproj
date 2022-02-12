@@ -17,6 +17,7 @@
 		404E214F27AAA39300EBBB78 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404E214E27AAA39300EBBB78 /* GameViewController.swift */; };
 		404E215127AAA3A200EBBB78 /* TableOfRecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404E215027AAA3A200EBBB78 /* TableOfRecordsViewController.swift */; };
 		40693CEB27B7EBBC006380EB /* AboutAuthorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40693CEA27B7EBBC006380EB /* AboutAuthorViewController.swift */; };
+		4082619D27B80527003860B4 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082619C27B80527003860B4 /* extensions.swift */; };
 		40D0C79427B5693700F568D4 /* UA_Wadim_Giant.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40D0C79327B5693700F568D4 /* UA_Wadim_Giant.ttf */; };
 		40F023C327B0422200D9C167 /* FailureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F023C227B0422200D9C167 /* FailureViewController.swift */; };
 /* End PBXBuildFile section */
@@ -34,6 +35,7 @@
 		404E214E27AAA39300EBBB78 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		404E215027AAA3A200EBBB78 /* TableOfRecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableOfRecordsViewController.swift; sourceTree = "<group>"; };
 		40693CEA27B7EBBC006380EB /* AboutAuthorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAuthorViewController.swift; sourceTree = "<group>"; };
+		4082619C27B80527003860B4 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		40D0C79327B5693700F568D4 /* UA_Wadim_Giant.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = UA_Wadim_Giant.ttf; sourceTree = "<group>"; };
 		40F023C227B0422200D9C167 /* FailureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,6 +72,7 @@
 			children = (
 				404E213827AAA37B00EBBB78 /* AppDelegate.swift */,
 				404E213A27AAA37B00EBBB78 /* SceneDelegate.swift */,
+				4082619C27B80527003860B4 /* extensions.swift */,
 				404E213E27AAA37B00EBBB78 /* Main.storyboard */,
 				40D0C79227B5692900F568D4 /* Fonts */,
 				404E215227AAA4A400EBBB78 /* Controllers */,
@@ -178,6 +181,7 @@
 				404E213927AAA37B00EBBB78 /* AppDelegate.swift in Sources */,
 				404E213B27AAA37B00EBBB78 /* SceneDelegate.swift in Sources */,
 				40F023C327B0422200D9C167 /* FailureViewController.swift in Sources */,
+				4082619D27B80527003860B4 /* extensions.swift in Sources */,
 				404E214D27AAA38D00EBBB78 /* SettingsViewController.swift in Sources */,
 				404E215127AAA3A200EBBB78 /* TableOfRecordsViewController.swift in Sources */,
 				40693CEB27B7EBBC006380EB /* AboutAuthorViewController.swift in Sources */,

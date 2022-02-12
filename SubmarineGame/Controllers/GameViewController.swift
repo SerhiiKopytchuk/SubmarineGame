@@ -33,6 +33,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var leftMenuView: UIView!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var exitButton: UIButton!
+    @IBOutlet weak var amountMissilesLabel: UILabel!
     
     
     
@@ -44,7 +45,12 @@ class GameViewController: UIViewController {
     var loose = false
     var missileTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in}
     var canShoot = true
-    var missiles = 3
+    var missiles = 3{
+        didSet{
+            let missilesText = String(missiles)
+            amountMissilesLabel.text = missilesText
+        }
+    }
     var canShowFailure = true
     
 
@@ -60,9 +66,12 @@ class GameViewController: UIViewController {
         backButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 20)
         closeButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 20)
         exitButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 30)
+        amountMissilesLabel.font = UIFont(name: "UA_Wadim_Giant", size: 30)
         backButton.titleLabel?.textColor = .black
         closeButton.titleLabel?.textColor = .black
         exitButton.titleLabel?.textColor = .black
+        amountMissilesLabel.textColor = .black
+        
         
         
         
@@ -79,6 +88,7 @@ class GameViewController: UIViewController {
         
         downButtonView.layer.dropShadow()
         upButtonView.layer.dropShadow()
+        amountMissilesLabel.layer.dropShadow()
         
         explosionImageView.isHidden = true
         blurAllScreen.isHidden = true

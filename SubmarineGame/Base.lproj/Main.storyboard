@@ -377,6 +377,12 @@
                                 <rect key="frame" x="299" y="210" width="60" height="9"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vH1-Xn-GEg">
+                                <rect key="frame" x="148" y="20" width="11" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRQ-nT-Q5c">
                                 <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="7WV-16-yAo">
@@ -435,6 +441,8 @@
                             <constraint firstItem="bRQ-nT-Q5c" firstAttribute="leading" secondItem="qNz-ES-avq" secondAttribute="leading" id="0uT-pb-P2U"/>
                             <constraint firstAttribute="bottom" secondItem="bRQ-nT-Q5c" secondAttribute="bottom" id="3Dm-9C-ucK"/>
                             <constraint firstAttribute="bottom" secondItem="nak-0F-hhy" secondAttribute="bottom" id="7nh-Cx-hJs"/>
+                            <constraint firstItem="vH1-Xn-GEg" firstAttribute="top" secondItem="OMi-Y4-2kL" secondAttribute="bottom" constant="20" id="CuT-3o-29U"/>
+                            <constraint firstItem="vH1-Xn-GEg" firstAttribute="leading" secondItem="nxy-S6-U1V" secondAttribute="trailing" constant="8" symbolic="YES" id="LoZ-oa-nS4"/>
                             <constraint firstItem="nxy-S6-U1V" firstAttribute="leading" secondItem="qNz-ES-avq" secondAttribute="leading" id="Z1p-pB-kVs"/>
                             <constraint firstItem="ozq-ak-BIA" firstAttribute="top" secondItem="nxy-S6-U1V" secondAttribute="bottom" constant="-20" id="ZoR-4n-qsU"/>
                             <constraint firstAttribute="trailing" secondItem="bRQ-nT-Q5c" secondAttribute="trailing" id="bZz-Ku-q5X"/>
@@ -447,6 +455,7 @@
                     <connections>
                         <outlet property="ScoreLabel" destination="Nvd-HR-8Eo" id="Jjj-VK-3AM"/>
                         <outlet property="airBalloonImageView" destination="m1F-BK-d2p" id="fft-fb-Huy"/>
+                        <outlet property="amountMissilesLabel" destination="vH1-Xn-GEg" id="4q3-sl-AYq"/>
                         <outlet property="backButton" destination="9gv-hd-kEo" id="dza-6c-zNR"/>
                         <outlet property="blurAllScreen" destination="bRQ-nT-Q5c" id="u4l-Su-69K"/>
                         <outlet property="boatImageView" destination="EEG-Il-Oi5" id="0NK-lV-OtD"/>
