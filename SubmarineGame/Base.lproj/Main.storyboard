@@ -218,7 +218,6 @@
                             <constraint firstItem="08s-A8-006" firstAttribute="top" secondItem="La8-rK-ObF" secondAttribute="top" id="ngu-O2-CJr"/>
                             <constraint firstItem="La8-rK-ObF" firstAttribute="top" secondItem="WE4-cP-Kbj" secondAttribute="bottom" constant="20" id="trG-eT-NfE"/>
                             <constraint firstItem="08s-A8-006" firstAttribute="height" secondItem="La8-rK-ObF" secondAttribute="height" id="vb6-Mk-CI7"/>
-                            <constraint firstItem="08s-A8-006" firstAttribute="firstBaseline" secondItem="La8-rK-ObF" secondAttribute="firstBaseline" id="wUD-k6-UL4"/>
                             <constraint firstItem="WE4-cP-Kbj" firstAttribute="trailing" secondItem="La8-rK-ObF" secondAttribute="trailing" id="x5T-Op-D4K"/>
                         </constraints>
                     </view>
