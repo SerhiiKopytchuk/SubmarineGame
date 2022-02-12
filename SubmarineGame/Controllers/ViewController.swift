@@ -25,7 +25,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         recordButton.layer.dropShadow()
         settingsButton.layer.dropShadow()
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -34,6 +33,9 @@ class ViewController: UIViewController {
         recordButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 30)
     }
     
+    
+    
+
     
     @IBAction func PlayButtonPressed(_ sender: UIButton) {
         guard let controller = self.storyboard?.instantiateViewController(withIdentifier: "GameViewController") as? GameViewController else{return}

@@ -53,6 +53,20 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
+        
+        ScoreLabel.font = UIFont(name: "UA_Wadim_Giant", size: 20)
+        backButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 20)
+        closeButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 20)
+        exitButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 30)
+        backButton.titleLabel?.textColor = .black
+        closeButton.titleLabel?.textColor = .black
+        exitButton.titleLabel?.textColor = .black
+        
+        
+        
+        
         //button up recognizer
         let upTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(upButtonPressed(_:)))
         upButtonView.isUserInteractionEnabled = true
