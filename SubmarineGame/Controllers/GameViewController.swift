@@ -10,7 +10,7 @@ import UIKit
 class GameViewController: UIViewController {
     //MARK: - IBOutlets
     @IBOutlet weak var ScoreLabel: UILabel!
-    @IBOutlet weak var submarineImageView: UIView!
+    @IBOutlet weak var submarineImageView: UIImageView!
     @IBOutlet weak var sharkImageView: UIImageView!
     @IBOutlet weak var sharkImageSecondView: UIImageView!
     @IBOutlet weak var sharkImageThirdView: UIImageView!
@@ -42,6 +42,7 @@ class GameViewController: UIViewController {
     var screenWidth = CGFloat(UIScreen.main.fixedCoordinateSpace.bounds.width)
     var screenHeight = CGFloat(UIScreen.main.fixedCoordinateSpace.bounds.height)
     var oxygen = Double(100)
+    var canFindOxygen = true
     var loose = false
     var missileTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in}
     var canShoot = true
@@ -53,7 +54,7 @@ class GameViewController: UIViewController {
     }
     var canShowFailure = true
     
-
+    
     
     //MARK: - lifecycle function
     override func viewDidLoad() {
@@ -61,7 +62,7 @@ class GameViewController: UIViewController {
         
         
         
-        
+        //fonts
         ScoreLabel.font = UIFont(name: "UA_Wadim_Giant", size: 20)
         backButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 20)
         closeButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 20)
@@ -72,9 +73,28 @@ class GameViewController: UIViewController {
         exitButton.titleLabel?.textColor = .black
         amountMissilesLabel.textColor = .black
         
+        //settings
+        guard let settings = UserDefaults.standard.value(Settings.self, forKey: "settings") else {return}
         
-        
-        
+        switch settings.image{
+        case 1:
+            let image = UIImage(named: "submarineImage")
+            self.submarineImageView.image = image
+        case 2:
+            let image = UIImage(named: "secondSubmarineImage")
+            self.submarineImageView.image = image
+        case 3:
+            let image = UIImage(named: "thirdSubmarineImage")
+            self.submarineImageView.image = image
+        default:
+            let image = UIImage(named: "submarineImage")
+            self.submarineImageView.image = image
+        }
+        missiles = settings.missilesOnStart
+        canFindOxygen = settings.reloadOxygen
+        if canFindOxygen == false{
+            airBalloonImageView.isHidden = true
+        }
         
         //button up recognizer
         let upTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(upButtonPressed(_:)))
@@ -86,6 +106,7 @@ class GameViewController: UIViewController {
         downButtonView.isUserInteractionEnabled = true
         downButtonView.addGestureRecognizer(downTapRecognizer)
         
+        //shadows
         downButtonView.layer.dropShadow()
         upButtonView.layer.dropShadow()
         amountMissilesLabel.layer.dropShadow()
@@ -131,6 +152,7 @@ class GameViewController: UIViewController {
         
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
+            self.blurAllScreen.alpha = 0.5
         }
         blurAllScreen.isHidden = false
     }
@@ -196,7 +218,7 @@ class GameViewController: UIViewController {
     }
     
     
-
+    
     
     func moveAirBallon(){
         self.airBalloonImageView.frame.origin.y = CGFloat.random(in: 100...self.screenWidth-50)
@@ -377,12 +399,14 @@ class GameViewController: UIViewController {
     }
     
     func oxygenToFull(){
-        _ = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { _ in
-            if self.submarineImageView.frame.intersects(self.airBalloonImageView.frame){
-                self.oxygen = 100
-                self.airBalloonImageView.frame.origin.x = CGFloat.random(in: 3000...4000)
-            }
-        })
+        if canFindOxygen{
+            _ = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { _ in
+                if self.submarineImageView.frame.intersects(self.airBalloonImageView.frame){
+                    self.oxygen = 100
+                    self.airBalloonImageView.frame.origin.x = CGFloat.random(in: 3000...4000)
+                }
+            })
+        }
     }
     
     func oxygenCheck() {

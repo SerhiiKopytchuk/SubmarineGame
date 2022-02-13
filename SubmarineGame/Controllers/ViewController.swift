@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var PlayButton: UIButton!
     
     
@@ -21,13 +22,22 @@ class ViewController: UIViewController {
     //MARK: - var/let
 
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        
+//        guard let settings = UserDefaults.standard.value(Settings.self, forKey: "settings") else {return}
+        
+        welcomeLabel.textColor = .white
+        
+        welcomeLabel.layer.dropShadow()
         recordButton.layer.dropShadow()
         settingsButton.layer.dropShadow()
+        
     }
     
     override func viewDidLayoutSubviews() {
+        guard let settings = UserDefaults.standard.value(Settings.self, forKey: "settings") else {return}
+        welcomeLabel.text = "Welcome \(settings.name) !!!"
+        welcomeLabel.font = UIFont(name: "UA_Wadim_Giant", size: 30)
         PlayButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 50)
         settingsButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 30)
         recordButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 30)
