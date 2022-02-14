@@ -46,13 +46,17 @@ class GameViewController: UIViewController {
     var loose = false
     var missileTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in}
     var canShoot = true
+    var canShowFailure = true
+    var name:String?
+    var scoreNum:Int = 0
     var missiles = 3{
         didSet{
             let missilesText = String(missiles)
             amountMissilesLabel.text = missilesText
         }
     }
-    var canShowFailure = true
+    
+ 
     
     
     
@@ -60,41 +64,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
-        //fonts
-        ScoreLabel.font = UIFont(name: "UA_Wadim_Giant", size: 20)
-        backButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 20)
-        closeButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 20)
-        exitButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 30)
-        amountMissilesLabel.font = UIFont(name: "UA_Wadim_Giant", size: 30)
-        backButton.titleLabel?.textColor = .black
-        closeButton.titleLabel?.textColor = .black
-        exitButton.titleLabel?.textColor = .black
-        amountMissilesLabel.textColor = .black
-        
-        //settings
-        guard let settings = UserDefaults.standard.value(Settings.self, forKey: "settings") else {return}
-        
-        switch settings.image{
-        case 1:
-            let image = UIImage(named: "submarineImage")
-            self.submarineImageView.image = image
-        case 2:
-            let image = UIImage(named: "secondSubmarineImage")
-            self.submarineImageView.image = image
-        case 3:
-            let image = UIImage(named: "thirdSubmarineImage")
-            self.submarineImageView.image = image
-        default:
-            let image = UIImage(named: "submarineImage")
-            self.submarineImageView.image = image
-        }
-        missiles = settings.missilesOnStart
-        canFindOxygen = settings.reloadOxygen
-        if canFindOxygen == false{
-            airBalloonImageView.isHidden = true
-        }
+    
         
         //button up recognizer
         let upTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(upButtonPressed(_:)))
@@ -117,6 +87,8 @@ class GameViewController: UIViewController {
         leftMenuConstrain.constant = -leftMenuView.frame.width
         leftMenuView.rounded(radius: 30)
         
+        fonts()
+        importSettings()
         startGame()
         moveRyph()
         moveWater()
@@ -143,6 +115,7 @@ class GameViewController: UIViewController {
     //MARK: - IBActions
     
     @IBAction func exitButtonPressed(_ sender: UIButton) {
+        self.saveResults()
         self.navigationController?.popToRootViewController(animated: true)
     }
     
@@ -197,7 +170,8 @@ class GameViewController: UIViewController {
     //MARK: - func
     
     
-    
+  
+
     
     func startGame(){
         sharkImageView.frame.origin.x  = screenHeight
@@ -350,30 +324,37 @@ class GameViewController: UIViewController {
         _ = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {  _ in
             if self.submarineImageView.frame.origin.y > self.screenWidth - 2 * self.ryphFirstImageView.frame.height && self.loose == false{
                 self.loose = true
+                self.saveResults()
                 self.showFailureWindow()
             }
             
             if self.submarineImageView.frame.intersects(self.sharkImageView.frame) && self.loose == false{
                 self.sharkImageView.frame.origin.x = 0
+                self.saveResults()
                 self.showFailureWindow()
             }
             if self.submarineImageView.frame.intersects(self.sharkImageSecondView.frame) && self.loose == false {
                 self.sharkImageSecondView.frame.origin.x = 0
+                self.saveResults()
                 self.showFailureWindow()
             }
             if self.submarineImageView.frame.intersects(self.sharkImageThirdView.frame) && self.loose == false {
                 self.sharkImageThirdView.frame.origin.x = 0
+                self.saveResults()
                 self.showFailureWindow()
             }
             if self.submarineImageView.frame.intersects(self.sharkImageForthView.frame) && self.loose == false {
                 self.sharkImageForthView.frame.origin.x = 0
+                self.saveResults()
                 self.showFailureWindow()
             }
             if self.submarineImageView.frame.intersects(self.boatImageView.frame) && self.loose == false {
                 self.boatImageView.frame.origin.x = 0
+                self.saveResults()
                 self.showFailureWindow()
             }
             if self.oxygen <= 0 && self.loose == false {
+                self.saveResults()
                 self.showFailureWindow()
             }
         }
@@ -391,10 +372,9 @@ class GameViewController: UIViewController {
     
     func score(){
         ScoreLabel.text = "Score: 0"
-        var score = 0
         _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-            score += 1
-            self.ScoreLabel.text = "Score: \(score)"
+            self.scoreNum +=  1
+            self.ScoreLabel.text = "Score: \(self.scoreNum)"
         }
     }
     
@@ -492,7 +472,60 @@ class GameViewController: UIViewController {
             self.explosionImageView.frame.origin.x -= 150
         }
     }
+    
+    func fonts(){
+        ScoreLabel.font = UIFont(name: "UA_Wadim_Giant", size: 20)
+        backButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 20)
+        closeButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 20)
+        exitButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 30)
+        amountMissilesLabel.font = UIFont(name: "UA_Wadim_Giant", size: 30)
+        backButton.titleLabel?.textColor = .black
+        closeButton.titleLabel?.textColor = .black
+        exitButton.titleLabel?.textColor = .black
+        amountMissilesLabel.textColor = .black
+    }
+    
+    func importSettings(){
+        
+        guard let settings = UserDefaults.standard.value(Settings.self, forKey: "settings") else {return}
+
+        name = settings.name
+        
+        switch settings.image{
+        case 1:
+            let image = UIImage(named: "submarineImage")
+            self.submarineImageView.image = image
+        case 2:
+            let image = UIImage(named: "secondSubmarineImage")
+            self.submarineImageView.image = image
+        case 3:
+            let image = UIImage(named: "thirdSubmarineImage")
+            self.submarineImageView.image = image
+        default:
+            let image = UIImage(named: "submarineImage")
+            self.submarineImageView.image = image
+        }
+        missiles = settings.missilesOnStart
+        canFindOxygen = settings.reloadOxygen
+        if canFindOxygen == false{
+            airBalloonImageView.isHidden = true
+        }
+    }
+    
+    private func saveResults(){
+        let result = Result(name: name ?? "", score: scoreNum ?? 0 )
+        var resultsArray = UserDefaults.standard.value([Result].self, forKey: "resultArray") ?? [Result]()
+        resultsArray.append(result)
+        UserDefaults.standard.set(encodable: resultsArray, forKey: "resultArray")
+        
+        for result in resultsArray{
+            print("name \(result.name) - score \(result.score)")
+        }
+    }
+    
 }
+
+
 
 //MARK: - extensions
 

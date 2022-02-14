@@ -44,7 +44,7 @@ class Settings: Codable{
         
         try container.encode(self.image, forKey: .image)
         try container.encode(self.name, forKey: .name)
-        try container.encode(self.reloadMissiles, forKey: .reloadMissiles)
+        try container.encode(self.reloadMissiles, forKey: .reloadMissiles) 
         try container.encode(self.reloadOxygen, forKey: .reloadOxygen)
         try container.encode(self.missilesOnStart, forKey: .missilesOnStart)
         

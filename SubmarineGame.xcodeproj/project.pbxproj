@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4013468227B94AE5003E536D /* ResultClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4013468127B94AE5003E536D /* ResultClass.swift */; };
 		404E213927AAA37B00EBBB78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404E213827AAA37B00EBBB78 /* AppDelegate.swift */; };
 		404E213B27AAA37B00EBBB78 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404E213A27AAA37B00EBBB78 /* SceneDelegate.swift */; };
 		404E213D27AAA37B00EBBB78 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404E213C27AAA37B00EBBB78 /* ViewController.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4013468127B94AE5003E536D /* ResultClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultClass.swift; sourceTree = "<group>"; };
 		404E213527AAA37B00EBBB78 /* SubmarineGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubmarineGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		404E213827AAA37B00EBBB78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		404E213A27AAA37B00EBBB78 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				4057C14027B8A75E00550F1E /* SettingsClass.swift */,
 				404E213A27AAA37B00EBBB78 /* SceneDelegate.swift */,
 				4082619C27B80527003860B4 /* extensions.swift */,
+				4013468127B94AE5003E536D /* ResultClass.swift */,
 				404E213E27AAA37B00EBBB78 /* Main.storyboard */,
 				40D0C79227B5692900F568D4 /* Fonts */,
 				404E215227AAA4A400EBBB78 /* Controllers */,
@@ -189,6 +192,7 @@
 				404E214D27AAA38D00EBBB78 /* SettingsViewController.swift in Sources */,
 				404E215127AAA3A200EBBB78 /* TableOfRecordsViewController.swift in Sources */,
 				40693CEB27B7EBBC006380EB /* AboutAuthorViewController.swift in Sources */,
+				4013468227B94AE5003E536D /* ResultClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
