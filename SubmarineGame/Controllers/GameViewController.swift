@@ -33,6 +33,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var leftMenuView: UIView!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var exitButton: UIButton!
+    @IBOutlet weak var missileRelloadImageView: UIImageView!
     @IBOutlet weak var amountMissilesLabel: UILabel!
     
     
@@ -43,12 +44,14 @@ class GameViewController: UIViewController {
     var screenHeight = CGFloat(UIScreen.main.fixedCoordinateSpace.bounds.height)
     var oxygen = Double(100)
     var canFindOxygen = true
+    var canReloadMissiles = true
     var loose = false
     var missileTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in}
     var canShoot = true
     var canShowFailure = true
     var name:String?
     var scoreNum:Int = 0
+    var startMissiles = 3
     var missiles = 3{
         didSet{
             let missilesText = String(missiles)
@@ -95,7 +98,9 @@ class GameViewController: UIViewController {
         oxygenCheck()
         score()
         moveAirBallon()
+        moveReloadMissile()
         oxygenToFull()
+        reloadMissiles()
         checkMissileTouch()
         endGame()
     }
@@ -179,6 +184,7 @@ class GameViewController: UIViewController {
         sharkImageThirdView.frame.origin.x  = screenHeight
         sharkImageForthView.frame.origin.x  = screenHeight
         airBalloonImageView.frame.origin.x  = screenHeight
+        missileRelloadImageView.frame.origin.x = screenHeight
         boatImageView.frame.origin.x  = screenHeight
         missileImageView.frame.origin.x = screenHeight+500
         
@@ -205,6 +211,22 @@ class GameViewController: UIViewController {
                 if self.airBalloonImageView.frame.origin.x < -200{
                     self.airBalloonImageView.frame.origin.y = CGFloat.random(in: 150...self.screenWidth-100)
                     self.airBalloonImageView.frame.origin.x = self.screenHeight + CGFloat.random(in: 3000...4000)
+                }
+            })
+        }
+    }
+    
+    func moveReloadMissile(){
+        self.missileRelloadImageView.frame.origin.y = CGFloat.random(in: 100...self.screenWidth-50)
+        _ = Timer.scheduledTimer(withTimeInterval: TimeInterval(Int.random(in: 30...55)), repeats: false) { _ in
+            _ = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { _ in
+                UIView.animate(withDuration: 0.05, delay: 0.0, options: [.curveLinear]) {
+                    self.missileRelloadImageView.frame.origin.x -= 10
+                } completion: { _ in
+                }
+                if self.missileRelloadImageView.frame.origin.x < -200{
+                    self.missileRelloadImageView.frame.origin.y = CGFloat.random(in: 150...self.screenWidth-100)
+                    self.missileRelloadImageView.frame.origin.x = self.screenHeight + CGFloat.random(in: 3000...4000)
                 }
             })
         }
@@ -389,6 +411,17 @@ class GameViewController: UIViewController {
         }
     }
     
+    func reloadMissiles(){
+        if canReloadMissiles{
+            _ = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { _ in
+                if self.submarineImageView.frame.intersects(self.missileRelloadImageView.frame){
+                    self.missiles = self.startMissiles
+                    self.missileRelloadImageView.frame.origin.x = CGFloat.random(in: 3000...4000)
+                }
+            })
+        }
+    }
+    
     func oxygenCheck() {
         _ = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { _ in
             if self.submarineImageView.frame.origin.y <= 50{
@@ -506,14 +539,19 @@ class GameViewController: UIViewController {
             self.submarineImageView.image = image
         }
         missiles = settings.missilesOnStart
+        startMissiles = settings.missilesOnStart
         canFindOxygen = settings.reloadOxygen
         if canFindOxygen == false{
             airBalloonImageView.isHidden = true
         }
+        canReloadMissiles = settings.reloadMissiles
+        if canReloadMissiles == false{
+            missileRelloadImageView.isHighlighted = true
+        }
     }
     
     private func saveResults(){
-        let result = Result(name: name ?? "", score: scoreNum ?? 0 )
+        let result = Result(name: name ?? "", score: scoreNum)
         var resultsArray = UserDefaults.standard.value([Result].self, forKey: "resultArray") ?? [Result]()
         resultsArray.append(result)
         UserDefaults.standard.set(encodable: resultsArray, forKey: "resultArray")
