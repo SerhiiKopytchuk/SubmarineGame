@@ -20,6 +20,7 @@
 		4057C14127B8A75E00550F1E /* SettingsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4057C14027B8A75E00550F1E /* SettingsClass.swift */; };
 		40693CEB27B7EBBC006380EB /* AboutAuthorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40693CEA27B7EBBC006380EB /* AboutAuthorViewController.swift */; };
 		4082619D27B80527003860B4 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082619C27B80527003860B4 /* extensions.swift */; };
+		40B0A3AC27DE603B00BF9CBC /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B0A3AB27DE603B00BF9CBC /* RecordTableViewCell.swift */; };
 		40D0C79427B5693700F568D4 /* UA_Wadim_Giant.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40D0C79327B5693700F568D4 /* UA_Wadim_Giant.ttf */; };
 		40F023C327B0422200D9C167 /* FailureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F023C227B0422200D9C167 /* FailureViewController.swift */; };
 /* End PBXBuildFile section */
@@ -40,6 +41,7 @@
 		4057C14027B8A75E00550F1E /* SettingsClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsClass.swift; sourceTree = "<group>"; };
 		40693CEA27B7EBBC006380EB /* AboutAuthorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAuthorViewController.swift; sourceTree = "<group>"; };
 		4082619C27B80527003860B4 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
+		40B0A3AB27DE603B00BF9CBC /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
 		40D0C79327B5693700F568D4 /* UA_Wadim_Giant.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = UA_Wadim_Giant.ttf; sourceTree = "<group>"; };
 		40F023C227B0422200D9C167 /* FailureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,6 +76,7 @@
 		404E213727AAA37B00EBBB78 /* SubmarineGame */ = {
 			isa = PBXGroup;
 			children = (
+				40B0A3AA27DE602A00BF9CBC /* cells */,
 				404E213827AAA37B00EBBB78 /* AppDelegate.swift */,
 				4057C14027B8A75E00550F1E /* SettingsClass.swift */,
 				404E213A27AAA37B00EBBB78 /* SceneDelegate.swift */,
@@ -100,6 +103,14 @@
 				40693CEA27B7EBBC006380EB /* AboutAuthorViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		40B0A3AA27DE602A00BF9CBC /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				40B0A3AB27DE603B00BF9CBC /* RecordTableViewCell.swift */,
+			);
+			path = cells;
 			sourceTree = "<group>";
 		};
 		40D0C79227B5692900F568D4 /* Fonts */ = {
@@ -184,6 +195,7 @@
 			files = (
 				404E214F27AAA39300EBBB78 /* GameViewController.swift in Sources */,
 				404E213D27AAA37B00EBBB78 /* ViewController.swift in Sources */,
+				40B0A3AC27DE603B00BF9CBC /* RecordTableViewCell.swift in Sources */,
 				404E213927AAA37B00EBBB78 /* AppDelegate.swift in Sources */,
 				404E213B27AAA37B00EBBB78 /* SceneDelegate.swift in Sources */,
 				40F023C327B0422200D9C167 /* FailureViewController.swift in Sources */,

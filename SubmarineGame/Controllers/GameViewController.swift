@@ -119,12 +119,13 @@ class GameViewController: UIViewController {
     
     //MARK: - IBActions
     
-    @IBAction func exitButtonPressed(_ sender: UIButton) {
+    @IBAction private func exitButtonPressed(_ sender: UIButton) {
         self.saveResults()
+        self.hideEverything()
         self.navigationController?.popToRootViewController(animated: true)
     }
     
-    @IBAction func toMenuButtonpressed(_ sender: UIButton) {
+    @IBAction private func toMenuButtonpressed(_ sender: UIButton) {
         canShowFailure = false
         leftMenuConstrain.constant = 0
         
@@ -135,7 +136,7 @@ class GameViewController: UIViewController {
         blurAllScreen.isHidden = false
     }
     
-    @IBAction func upButtonPressed(_ sender: UIButton) {
+    @IBAction private func upButtonPressed(_ sender: UIButton) {
         if self.submarineImageView.frame.origin.y > 50{
             UIView.animate(withDuration: 0.2) {
                 self.submarineImageView.frame.origin.y -= 30
@@ -144,14 +145,14 @@ class GameViewController: UIViewController {
     }
     
     
-    @IBAction func downButtonPressed(_ sender: UIButton) {
+    @IBAction private func downButtonPressed(_ sender: UIButton) {
         UIView.animate(withDuration: 0.2) {
             self.submarineImageView.frame.origin.y += 30
         }
     }
     
     
-    @IBAction func FireButtonPressed(_ sender: UIButton) {
+    @IBAction private func FireButtonPressed(_ sender: UIButton) {
         if canShoot{
             if missiles>0{
                 missileFire()
@@ -159,7 +160,7 @@ class GameViewController: UIViewController {
         }
     }
     
-    @IBAction func closeButtonPressed(_ sender: UIButton) {
+    @IBAction private func closeButtonPressed(_ sender: UIButton) {
         
         
         canShowFailure = true
@@ -178,7 +179,7 @@ class GameViewController: UIViewController {
   
 
     
-    func startGame(){
+    private func startGame(){
         sharkImageView.frame.origin.x  = screenHeight
         sharkImageSecondView.frame.origin.x  = screenHeight
         sharkImageThirdView.frame.origin.x  = screenHeight
@@ -200,7 +201,7 @@ class GameViewController: UIViewController {
     
     
     
-    func moveAirBallon(){
+    private func moveAirBallon(){
         self.airBalloonImageView.frame.origin.y = CGFloat.random(in: 100...self.screenWidth-50)
         _ = Timer.scheduledTimer(withTimeInterval: TimeInterval(Int.random(in: 30...55)), repeats: false) { _ in
             _ = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { _ in
@@ -216,7 +217,7 @@ class GameViewController: UIViewController {
         }
     }
     
-    func moveReloadMissile(){
+    private func moveReloadMissile(){
         self.missileRelloadImageView.frame.origin.y = CGFloat.random(in: 100...self.screenWidth-50)
         _ = Timer.scheduledTimer(withTimeInterval: TimeInterval(Int.random(in: 30...55)), repeats: false) { _ in
             _ = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { _ in
@@ -234,7 +235,7 @@ class GameViewController: UIViewController {
     
     
     
-    func moveShark(){
+    private func moveShark(){
         self.sharkImageView.frame.origin.y = CGFloat.random(in: 100...self.screenWidth-50)
         _ = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { _ in
             UIView.animate(withDuration: 0.05, delay: 0.0, options: [.curveLinear]) {
@@ -248,7 +249,7 @@ class GameViewController: UIViewController {
         })
     }
     
-    func moveSharkSecond(){
+    private func moveSharkSecond(){
         self.sharkImageSecondView.frame.origin.y = CGFloat.random(in: 100...self.screenWidth-150)
         _ = Timer.scheduledTimer(withTimeInterval: TimeInterval(Int32.random(in: 4...8)), repeats: false, block: { _ in
             _ = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { _ in
@@ -264,7 +265,7 @@ class GameViewController: UIViewController {
         })
     }
     
-    func moveSharkThird(){
+    private func moveSharkThird(){
         self.sharkImageThirdView.frame.origin.y = CGFloat.random(in: 100...self.screenWidth-150)
         _ = Timer.scheduledTimer(withTimeInterval: TimeInterval(Int32.random(in: 8...16)), repeats: false, block: { _ in
             _ = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { _ in
@@ -280,7 +281,7 @@ class GameViewController: UIViewController {
         })
     }
     
-    func moveSharkForth(){
+    private func moveSharkForth(){
         self.sharkImageForthView.frame.origin.y = CGFloat.random(in: 100...self.screenWidth-150)
         _ = Timer.scheduledTimer(withTimeInterval: TimeInterval(Int32.random(in: 1...30)), repeats: false, block: { _ in
             _ = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { _ in
@@ -297,7 +298,7 @@ class GameViewController: UIViewController {
     }
     
     
-    func moveBoat(){
+    private func moveBoat(){
         _ = Timer.scheduledTimer(withTimeInterval: 5 , repeats: false, block: { _ in
             _ = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: { _ in
                 UIView.animate(withDuration: 0.01, delay: 0.0, options: [.curveLinear]) {
@@ -312,7 +313,7 @@ class GameViewController: UIViewController {
         })
     }
     
-    func moveRyph(){
+    private func moveRyph(){
         ryphSecondImageView.frame.origin.y = ryphFirstImageView.frame.origin.y
         ryphSecondImageView.frame.origin.x = screenHeight
         let firstPos = self.ryphFirstImageView.frame.origin.x
@@ -326,7 +327,7 @@ class GameViewController: UIViewController {
         }
     }
     
-    func moveWater(){
+    private func moveWater(){
         waterSecondImageView.frame.origin.y = waterFirstImageView.frame.origin.y
         waterSecondImageView.frame.origin.x = screenHeight
         let firstPos = self.waterFirstImageView.frame.origin.x
@@ -341,7 +342,7 @@ class GameViewController: UIViewController {
     }
     
     
-    func endGame(){
+    private func endGame(){
         
         _ = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {  _ in
             if self.submarineImageView.frame.origin.y > self.screenWidth - 2 * self.ryphFirstImageView.frame.height && self.loose == false{
@@ -382,7 +383,7 @@ class GameViewController: UIViewController {
         }
     }
     
-    func showFailureWindow(){
+    private func showFailureWindow(){
         if canShowFailure{
             self.loose = true
             let controller = navigationController?.storyboard?.instantiateViewController(withIdentifier: "FailureViewController") as! FailureViewController
@@ -392,7 +393,7 @@ class GameViewController: UIViewController {
     }
     
     
-    func score(){
+    private func score(){
         ScoreLabel.text = "Score: 0"
         _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
             self.scoreNum +=  1
@@ -400,7 +401,7 @@ class GameViewController: UIViewController {
         }
     }
     
-    func oxygenToFull(){
+    private func oxygenToFull(){
         if canFindOxygen{
             _ = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { _ in
                 if self.submarineImageView.frame.intersects(self.airBalloonImageView.frame){
@@ -411,7 +412,7 @@ class GameViewController: UIViewController {
         }
     }
     
-    func reloadMissiles(){
+    private func reloadMissiles(){
         if canReloadMissiles{
             _ = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { _ in
                 if self.submarineImageView.frame.intersects(self.missileRelloadImageView.frame){
@@ -422,7 +423,7 @@ class GameViewController: UIViewController {
         }
     }
     
-    func oxygenCheck() {
+    private func oxygenCheck() {
         _ = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { _ in
             if self.submarineImageView.frame.origin.y <= 50{
                 if self.oxygen > 100{
@@ -445,7 +446,7 @@ class GameViewController: UIViewController {
         })
     }
     
-    func missileFire(){
+    private func missileFire(){
         missiles -= 1
         canShoot = false
         missileImageView.center = submarineImageView.center
@@ -461,7 +462,7 @@ class GameViewController: UIViewController {
         })
     }
     
-    func checkMissileTouch(){
+    private func checkMissileTouch(){
         _ = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { [self] _ in
             if missileImageView.frame.intersects(sharkImageView.frame){
                 showExplosion()
@@ -490,7 +491,7 @@ class GameViewController: UIViewController {
         }
     }
     
-    func showExplosion() {
+    private func showExplosion() {
         self.explosionImageView.center = missileImageView.center
         self.explosionImageView.frame.origin.x += explosionImageView.frame.width/2
         self.explosionImageView.isHidden = false
@@ -500,13 +501,13 @@ class GameViewController: UIViewController {
         }
     }
     
-    func moveExplotion(){
+    private func moveExplotion(){
         UIView.animate(withDuration: 1.1, delay: 0.0, options: [.repeat, .curveLinear]) {
             self.explosionImageView.frame.origin.x -= 150
         }
     }
     
-    func fonts(){
+    private func fonts(){
         ScoreLabel.font = UIFont(name: "UA_Wadim_Giant", size: 20)
         backButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 20)
         closeButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 20)
@@ -518,7 +519,7 @@ class GameViewController: UIViewController {
         amountMissilesLabel.textColor = .black
     }
     
-    func importSettings(){
+    private func importSettings(){
         
         guard let settings = UserDefaults.standard.value(Settings.self, forKey: "settings") else {return}
 
@@ -554,14 +555,29 @@ class GameViewController: UIViewController {
         let result = Result(name: name ?? "", score: scoreNum)
         var resultsArray = UserDefaults.standard.value([Result].self, forKey: "resultArray") ?? [Result]()
         resultsArray.append(result)
+//        resultsArray = [Result]()
         UserDefaults.standard.set(encodable: resultsArray, forKey: "resultArray")
-        
-        for result in resultsArray{
-            print("name \(result.name) - score \(result.score)")
-        }
     }
     
+    
+    func hideEverything(){
+       submarineImageView.isHidden = true
+       sharkImageView.isHidden = true
+       sharkImageSecondView.isHidden = true
+       sharkImageThirdView.isHidden = true
+       sharkImageForthView.isHidden = true
+       boatImageView.isHidden = true
+       ryphFirstImageView.isHidden = true
+       ryphSecondImageView.isHidden = true
+       waterFirstImageView.isHidden = true
+       waterSecondImageView.isHidden = true
+       airBalloonImageView.isHidden = true
+       explosionImageView.isHidden = true
+       missileRelloadImageView.isHidden = true
+   }
+    
 }
+
 
 
 

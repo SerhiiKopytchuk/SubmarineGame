@@ -53,12 +53,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func recordsButtonPressed(_ sender: UIButton) {
-//        guard let controller = self.storyboard?.instantiateViewController(withIdentifier: "TableOfRecordsViewController") as? TableOfRecordsViewController else {return}
-//        self.navigationController?.pushViewController(controller, animated: true)
+        guard let controller = self.storyboard?.instantiateViewController(withIdentifier: "TableOfRecordsViewController") as? TableOfRecordsViewController else {return}
+        self.navigationController?.pushViewController(controller, animated: true)
         
-        presentAlertWithTitle(title: "Sorry, This in't working", message: "We made it in nearly future", options: "Ok") { (option) in
-            
-        }
+//        presentAlertWithTitle(title: "Sorry, This in't working", message: "We made it in nearly future", options: "Ok") { (option) in
+//        }
     }
     
     @IBAction func settingsButtonPressed(_ sender: UIButton) {
