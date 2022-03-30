@@ -67,3 +67,9 @@ extension UserDefaults{
         return nil
     }
 }
+
+extension String{
+    func localized() -> String{
+        return NSLocalizedString(self, comment: "")
+    }
+}

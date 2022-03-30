@@ -1,0 +1,33 @@
+/* 
+  Localizable.strings
+  SubmarineGame
+
+  Created by Serhii Kopytchuk on 30.03.2022.
+  
+*/
+
+"play" = "Играть";
+"settings" = "настройки";
+"records" = "таблица рекордов";
+"welcome" = "Добро пожаловать";
+
+"gameOver" = "Игра окончена";
+"score" = "очки";
+"score:" = "очки: ";
+"retry" = "повторить";
+
+"back" = "назад";
+
+"fire" = "огонь";
+"menu" = "меню";
+"close" = "закрыть";
+"exit" = "выход";
+
+"aboutAuthor" = "про автора";
+"choose" = "выбрать";
+"yourName" = "Твое имя: ";
+"reloadMissiles" = "перезаряжать ракеты";
+"reloadOxygen" = "перезаряжать воздух";
+"missilesOnStart" = "ракеты на старте";
+
+"name" = "имя";

@@ -24,7 +24,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        guard let settings = UserDefaults.standard.value(Settings.self, forKey: "settings") else {return}
+        settingsButton.setTitle("settings".localized(), for: .normal)
+        recordButton.setTitle("records".localized(), for: .normal)
+        PlayButton.setTitle("play".localized(), for: .normal)
+
+
         
         welcomeLabel.textColor = .white
         
@@ -36,7 +40,8 @@ class ViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         guard let settings = UserDefaults.standard.value(Settings.self, forKey: "settings") else {return}
-        welcomeLabel.text = "Welcome \(settings.name) !!!"
+        welcomeLabel.text = "welcome".localized()
+        welcomeLabel.text? += " \(settings.name) !!!"
         welcomeLabel.font = UIFont(name: "UA_Wadim_Giant", size: 30)
         PlayButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 50)
         settingsButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 30)

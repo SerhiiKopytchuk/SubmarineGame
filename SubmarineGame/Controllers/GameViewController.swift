@@ -24,7 +24,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var waterSecondImageView: UIImageView!
     @IBOutlet weak var oxygenView: UIView!
     @IBOutlet weak var airBalloonImageView: UIImageView!
-    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var missileImageView: UIImageView!
     @IBOutlet weak var explosionImageView: UIImageView!
     @IBOutlet weak var fireButton: UIButton!
@@ -91,6 +91,7 @@ class GameViewController: UIViewController {
         leftMenuView.rounded(radius: 30)
         
         fonts()
+        Localize()
         importSettings()
         startGame()
         moveRyph()
@@ -107,10 +108,10 @@ class GameViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         ScoreLabel.font = UIFont(name: "UA_Wadim_Giant", size: 20)
-        backButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 20)
+        menuButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 20)
         closeButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 20)
-        exitButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 30)
-        backButton.titleLabel?.textColor = .black
+        exitButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 25)
+        menuButton.titleLabel?.textColor = .black
         closeButton.titleLabel?.textColor = .black
         exitButton.titleLabel?.textColor = .black
         
@@ -397,7 +398,8 @@ class GameViewController: UIViewController {
         ScoreLabel.text = "Score: 0"
         _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
             self.scoreNum +=  1
-            self.ScoreLabel.text = "Score: \(self.scoreNum)"
+            self.ScoreLabel.text = "score:".localized()
+            self.ScoreLabel.text? += String(self.scoreNum)
         }
     }
     
@@ -509,11 +511,11 @@ class GameViewController: UIViewController {
     
     private func fonts(){
         ScoreLabel.font = UIFont(name: "UA_Wadim_Giant", size: 20)
-        backButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 20)
+        menuButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 20)
         closeButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 20)
         exitButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 30)
         amountMissilesLabel.font = UIFont(name: "UA_Wadim_Giant", size: 30)
-        backButton.titleLabel?.textColor = .black
+        menuButton.titleLabel?.textColor = .black
         closeButton.titleLabel?.textColor = .black
         exitButton.titleLabel?.textColor = .black
         amountMissilesLabel.textColor = .black
@@ -576,7 +578,21 @@ class GameViewController: UIViewController {
        missileRelloadImageView.isHidden = true
    }
     
+    
+    func Localize(){
+        
+        closeButton.setTitle("close".localized(), for: .normal)
+        exitButton.setTitle("exit".localized(), for: .normal)
+        
+        
+//        fireButton.setTitle("fire".localized(), for: .normal)
+        
+        menuButton.setTitle("menu".localized(), for: .normal)
+    }
+
+    
 }
+
 
 
 

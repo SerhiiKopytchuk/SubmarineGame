@@ -1,0 +1,37 @@
+/* 
+  Localizable.strings
+  SubmarineGame
+
+  Created by Serhii Kopytchuk on 30.03.2022.
+  
+*/
+
+
+"play" = "play";
+"settings" = "settings";
+"records" = "records";
+"welcome" = "Welcome";
+
+"gameOver" = "Game over";
+"score" = "score";
+"retry" = "retry";
+
+"back" = "back";
+
+"fire" = "fire";
+"menu" = "menu";
+"close" = "close";
+"exit" = "exit";
+
+"aboutAuthor" = "about Author";
+"choose" = "choose";
+"yourName" = "your name: ";
+"reloadMissiles" = "reload missiles";
+"reloadOxygen" = "reload oxygen";
+"missilesOnStart" = "missiles on start";
+
+"name" = "name";
+
+
+
+

@@ -66,15 +66,9 @@ class SettingsViewController: UIViewController {
         
         
         
-        //fonts
-
-        youreNameLabel.font = UIFont(name: "UA_Wadim_Giant", size: 25)
-        reloadMissilesLabel.font = UIFont(name: "UA_Wadim_Giant", size: 25)
-        reloadOxygenLabel.font = UIFont(name: "UA_Wadim_Giant", size: 25)
-        missilesOnStartLabel.font = UIFont(name: "UA_Wadim_Giant", size: 25)
-        countOfMissilesLabel.font = UIFont(name: "UA_Wadim_Giant", size: 25)
-        AboutAuthorButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 17)
-        BackButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 17)
+        setFonts()
+        Localize()
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -153,6 +147,28 @@ class SettingsViewController: UIViewController {
     
     //MARK: - func
     
+    func setFonts(){
+        youreNameLabel.font = UIFont(name: "UA_Wadim_Giant", size: 25)
+        reloadMissilesLabel.font = UIFont(name: "UA_Wadim_Giant", size: 20)
+        reloadOxygenLabel.font = UIFont(name: "UA_Wadim_Giant", size: 20)
+        missilesOnStartLabel.font = UIFont(name: "UA_Wadim_Giant", size: 20)
+        countOfMissilesLabel.font = UIFont(name: "UA_Wadim_Giant", size: 20)
+        AboutAuthorButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 17)
+        BackButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 17)
+    }
+    
+    private func Localize(){
+        AboutAuthorButton.setTitle("aboutAuthor".localized(), for: .normal)
+        chooseFirstButton.setTitle("choose".localized(), for: .normal)
+        chooseSecondButton.setTitle("choose".localized(), for: .normal)
+        chooseThirdButton.setTitle("choose".localized(), for: .normal)
+        youreNameLabel.text = "yourName".localized()
+        reloadMissilesLabel.text = "reloadMissiles".localized()
+        reloadOxygenLabel.text = "reloadOxygen".localized()
+        missilesOnStartLabel.text = "missilesOnStart".localized()
+        BackButton.setTitle("back".localized(), for: .normal)
+
+    }
 }
 
 

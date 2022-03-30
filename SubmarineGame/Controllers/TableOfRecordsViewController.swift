@@ -8,13 +8,20 @@
 import UIKit
 
 class TableOfRecordsViewController: UIViewController {
+    @IBOutlet weak var scoreTableView: UITableView!
 
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var backButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        scoreLabel.text = "score".localized()
+        nameLabel.text = "name".localized()
+        backButton.titleLabel?.text = "back".localized()
+        
     }
-    @IBOutlet weak var scoreTableView: UITableView!
     
     @IBAction func toMenuButtonPressed(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
@@ -36,7 +43,7 @@ extension TableOfRecordsViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecordTableViewCell", for: indexPath) as? RecordTableViewCell else {return UITableViewCell()}
         let resultsArray = UserDefaults.standard.value([Result].self, forKey: "resultArray") ?? [Result]()
-        
+            
         cell.configuratioin(name: resultsArray[indexPath.row].name, score: String(resultsArray[indexPath.row].score) )
         
         return cell
