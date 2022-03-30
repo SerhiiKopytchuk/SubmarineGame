@@ -18,6 +18,10 @@ class FailureViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        retryButton.titleLabel?.text = "retry".localized()
+        gameOverLabel.text = "gameOver".localized()
+        
+        
         if let score = score {
             ScoreLabel.text = score
         }
