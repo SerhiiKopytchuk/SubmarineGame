@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreMotion
 
 class GameViewController: UIViewController {
     //MARK: - IBOutlets
@@ -52,12 +53,16 @@ class GameViewController: UIViewController {
     var name:String?
     var scoreNum:Int = 0
     var startMissiles = 3
+    
     var missiles = 3{
         didSet{
             let missilesText = String(missiles)
             amountMissilesLabel.text = missilesText
         }
     }
+    
+    let motionManager = CMMotionManager()
+
     
  
     
@@ -103,6 +108,7 @@ class GameViewController: UIViewController {
         oxygenToFull()
         reloadMissiles()
         checkMissileTouch()
+        checkForShake()
         endGame()
     }
     
@@ -588,6 +594,19 @@ class GameViewController: UIViewController {
 //        fireButton.setTitle("fire".localized(), for: .normal)
         
         menuButton.setTitle("menu".localized(), for: .normal)
+    }
+    
+    private func checkForShake(){
+        if motionManager.isDeviceMotionAvailable {
+                    motionManager.gyroUpdateInterval = 0.1
+                    motionManager.startGyroUpdates(to: .main) { (data, error) in
+                        if let rate = data?.rotationRate {
+                            if rate.x > 1 || rate.y > 1 || rate.z > 1{
+                                self.submarineImageView.frame.origin.y = 45
+                            }
+                        }
+                    }
+                }
     }
 
     
