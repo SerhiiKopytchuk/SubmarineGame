@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class SettingsViewController: UIViewController {
     
     //MARK: - IBOutlet
@@ -39,6 +40,7 @@ class SettingsViewController: UIViewController {
     //MARK: - lifecycleFunc
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
         guard let settings = UserDefaults.standard.value(Settings.self, forKey: "settings") else {return}
         imageNum = settings.image
@@ -70,6 +72,7 @@ class SettingsViewController: UIViewController {
         Localize()
         
     }
+
     
     override func viewDidLayoutSubviews() {
         chooseFirstButton.titleLabel?.font = UIFont(name: "UA_Wadim_Giant", size: 17)

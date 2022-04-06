@@ -22,11 +22,17 @@
 		406DA77627F4D5760015E7CC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 406DA77827F4D5760015E7CC /* Localizable.strings */; };
 		4082619D27B80527003860B4 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082619C27B80527003860B4 /* extensions.swift */; };
 		40B0A3AC27DE603B00BF9CBC /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B0A3AB27DE603B00BF9CBC /* RecordTableViewCell.swift */; };
+		40D090F627FDD3CE006F4367 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40D090F527FDD3CE006F4367 /* GoogleService-Info.plist */; };
+		40D0910027FDDAC8006F4367 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 40D090FF27FDDAC8006F4367 /* FirebaseAnalytics */; };
+		40D0910227FDDAC8006F4367 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 40D0910127FDDAC8006F4367 /* FirebaseAuth */; };
+		40D0910427FDDAC8006F4367 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 40D0910327FDDAC8006F4367 /* FirebaseCrashlytics */; };
 		40D0C79427B5693700F568D4 /* UA_Wadim_Giant.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40D0C79327B5693700F568D4 /* UA_Wadim_Giant.ttf */; };
 		40F023C327B0422200D9C167 /* FailureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F023C227B0422200D9C167 /* FailureViewController.swift */; };
+		DE0D8B9F2AAA38FF29BB340B /* Pods_SubmarineGame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CE48B46F859FCDB4C8CBA6 /* Pods_SubmarineGame.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1076AB8D43C8ED6A1119297D /* Pods-SubmarineGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SubmarineGame.debug.xcconfig"; path = "Target Support Files/Pods-SubmarineGame/Pods-SubmarineGame.debug.xcconfig"; sourceTree = "<group>"; };
 		4013468127B94AE5003E536D /* ResultClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultClass.swift; sourceTree = "<group>"; };
 		404E213527AAA37B00EBBB78 /* SubmarineGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubmarineGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		404E213827AAA37B00EBBB78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,8 +51,11 @@
 		406DA77927F4D5A30015E7CC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4082619C27B80527003860B4 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		40B0A3AB27DE603B00BF9CBC /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
+		40D090F527FDD3CE006F4367 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		40D0C79327B5693700F568D4 /* UA_Wadim_Giant.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = UA_Wadim_Giant.ttf; sourceTree = "<group>"; };
 		40F023C227B0422200D9C167 /* FailureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureViewController.swift; sourceTree = "<group>"; };
+		47B37E8AAF1469EE679E65F9 /* Pods-SubmarineGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SubmarineGame.release.xcconfig"; path = "Target Support Files/Pods-SubmarineGame/Pods-SubmarineGame.release.xcconfig"; sourceTree = "<group>"; };
+		A2CE48B46F859FCDB4C8CBA6 /* Pods_SubmarineGame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SubmarineGame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +63,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40D0910027FDDAC8006F4367 /* FirebaseAnalytics in Frameworks */,
+				40D0910427FDDAC8006F4367 /* FirebaseCrashlytics in Frameworks */,
+				40D0910227FDDAC8006F4367 /* FirebaseAuth in Frameworks */,
+				DE0D8B9F2AAA38FF29BB340B /* Pods_SubmarineGame.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +78,8 @@
 			children = (
 				404E213727AAA37B00EBBB78 /* SubmarineGame */,
 				404E213627AAA37B00EBBB78 /* Products */,
+				A79F3C0B4996975CF9BE54DE /* Pods */,
+				4CB6CB2117861E46CE74C408 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,6 +107,7 @@
 				404E214127AAA37D00EBBB78 /* Assets.xcassets */,
 				404E214327AAA37D00EBBB78 /* LaunchScreen.storyboard */,
 				404E214627AAA37D00EBBB78 /* Info.plist */,
+				40D090F527FDD3CE006F4367 /* GoogleService-Info.plist */,
 			);
 			path = SubmarineGame;
 			sourceTree = "<group>";
@@ -125,6 +141,23 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		4CB6CB2117861E46CE74C408 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A2CE48B46F859FCDB4C8CBA6 /* Pods_SubmarineGame.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A79F3C0B4996975CF9BE54DE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1076AB8D43C8ED6A1119297D /* Pods-SubmarineGame.debug.xcconfig */,
+				47B37E8AAF1469EE679E65F9 /* Pods-SubmarineGame.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,15 +165,22 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 404E214927AAA37D00EBBB78 /* Build configuration list for PBXNativeTarget "SubmarineGame" */;
 			buildPhases = (
+				27D9F8DF9CECD6D2868D7FEA /* [CP] Check Pods Manifest.lock */,
 				404E213127AAA37B00EBBB78 /* Sources */,
 				404E213227AAA37B00EBBB78 /* Frameworks */,
 				404E213327AAA37B00EBBB78 /* Resources */,
+				40D090F827FDD670006F4367 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = SubmarineGame;
+			packageProductDependencies = (
+				40D090FF27FDDAC8006F4367 /* FirebaseAnalytics */,
+				40D0910127FDDAC8006F4367 /* FirebaseAuth */,
+				40D0910327FDDAC8006F4367 /* FirebaseCrashlytics */,
+			);
 			productName = SubmarineGame;
 			productReference = 404E213527AAA37B00EBBB78 /* SubmarineGame.app */;
 			productType = "com.apple.product-type.application";
@@ -170,6 +210,9 @@
 				ru,
 			);
 			mainGroup = 404E212C27AAA37B00EBBB78;
+			packageReferences = (
+				40D090FE27FDDAC8006F4367 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 404E213627AAA37B00EBBB78 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -189,10 +232,55 @@
 				404E214227AAA37D00EBBB78 /* Assets.xcassets in Resources */,
 				404E214027AAA37B00EBBB78 /* Main.storyboard in Resources */,
 				40D0C79427B5693700F568D4 /* UA_Wadim_Giant.ttf in Resources */,
+				40D090F627FDD3CE006F4367 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		27D9F8DF9CECD6D2868D7FEA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SubmarineGame-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		40D090F827FDD670006F4367 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		404E213127AAA37B00EBBB78 /* Sources */ = {
@@ -365,11 +453,13 @@
 		};
 		404E214A27AAA37D00EBBB78 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1076AB8D43C8ED6A1119297D /* Pods-SubmarineGame.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = H6466NBM9Y;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SubmarineGame/Info.plist;
@@ -394,11 +484,13 @@
 		};
 		404E214B27AAA37D00EBBB78 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47B37E8AAF1469EE679E65F9 /* Pods-SubmarineGame.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = H6466NBM9Y;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SubmarineGame/Info.plist;
@@ -443,6 +535,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		40D090FE27FDDAC8006F4367 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = exactVersion;
+				version = 8.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		40D090FF27FDDAC8006F4367 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 40D090FE27FDDAC8006F4367 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		40D0910127FDDAC8006F4367 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 40D090FE27FDDAC8006F4367 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		40D0910327FDDAC8006F4367 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 40D090FE27FDDAC8006F4367 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 404E212D27AAA37B00EBBB78 /* Project object */;
 }
